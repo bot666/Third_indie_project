@@ -309,9 +309,6 @@ MonoBehaviour:
   finalValue: 0
   dot: 0
   line: 0
-  morse:
-  - .-
-  - -.
   alphabet:
   - A
   - B
