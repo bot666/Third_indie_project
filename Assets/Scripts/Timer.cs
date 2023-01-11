@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using TMPro;
 public class Timer : MonoBehaviour
 {
 
@@ -11,6 +12,8 @@ public class Timer : MonoBehaviour
     public float finalValue;
     public int dot;
     public int line;
+     
+     [SerializeField]TextMeshProUGUI getMorse;
 
     public string[] alphabet = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N",
     "O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"};
@@ -52,6 +55,7 @@ public class Timer : MonoBehaviour
 
             finalValue = 0;
             currentMorse += ".";
+            getMorse.text += " • ";
             Debug.Log(currentMorse);
 
 
@@ -61,29 +65,29 @@ public class Timer : MonoBehaviour
             Debug.Log("-");
             finalValue = 0;
             currentMorse += "-";
+            getMorse.text += " — ";
         }
+
+
 
             
 
 
         
-        if (hasan.Contains(currentMorse) && hasan.Length >= 37)
+        if ( hasan.Contains(currentMorse))
         {
-            int pos = Array.IndexOf(hasan, currentMorse);
-            string number = alphabet[pos];
-            if (Input.GetKeyDown(KeyCode.E))
+            //getMorse.text = currentMorse;
+            if ( Input.GetKeyDown(KeyCode.E))
             {
+                int pos = Array.IndexOf(hasan, currentMorse);
+                string number = alphabet[pos];
                 Debug.Log(number);
                 Debug.Log(currentMorse);
             }
 
-            //string number = alphabet[pos];
-
-
-
-
-
+            
         }
+
      // int pos = Array.IndexOf(hasan, currentMorse);
      // string number = alphabet[pos];
      // if ( Input.GetKeyDown(KeyCode.E) && hasan.Contains(currentMorse))
@@ -101,6 +105,7 @@ public class Timer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             currentMorse = "";
+            getMorse.text = "";
 
         }
 
