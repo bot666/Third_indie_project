@@ -19,10 +19,14 @@ public class Timer : MonoBehaviour
      [SerializeField]TextMeshProUGUI getWord;
      [SerializeField] float spaceDelay = 10f;
      [SerializeField] Button spaceButton; 
+     [SerializeField] AudioSource dashSound;
+     [SerializeField] AudioSource dotSound;
+     
      ColorBlock theColor;
 
     public string[] alphabet = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N",
     "O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"};
+                           //0     //1    //2    //3  //4  //5    //6   //7 //8   //9
    public string[] hasan ={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---",
     //10     //11 //12 //13 //14  //15   //16   //17  //18 //19  //20 //21   //22  //23
     "-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-",
@@ -32,10 +36,14 @@ public class Timer : MonoBehaviour
     "-----",".----","..---","...--","....-",".....","-....","--...","---..","----."};
 
     public string currentMorse;
+    
     void start()
     {
         spaceButton = GetComponent<Button>();
         theColor = GetComponent<Button>().colors;
+        dotSound = GetComponent<AudioSource>();
+        dashSound = GetComponent<AudioSource>();
+         
     }
 
     
@@ -48,7 +56,7 @@ public class Timer : MonoBehaviour
     void  getNumber()
     {
         
-                                                  //0   //1    //2    //3  //4  //5    //6    //7  //8   //9
+                                                 
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -62,6 +70,8 @@ public class Timer : MonoBehaviour
             theColor.colorMultiplier = 1;
             theColor.fadeDuration = 0.15f;
             spaceButton.colors = theColor;
+            
+            
 
         }
         if (Input.GetKeyUp(KeyCode.Space))
@@ -77,6 +87,8 @@ public class Timer : MonoBehaviour
             theColor.colorMultiplier = 1;
             theColor.fadeDuration = 0.15f;
             spaceButton.colors = theColor;
+           
+
         }
         if (finalValue <= 0.120f && finalValue > 0F)
         {
@@ -85,7 +97,7 @@ public class Timer : MonoBehaviour
             currentMorse += ".";
             getMorse.text += " • ";
             Debug.Log(currentMorse);
-
+            dotSound.Play();
 
         }
         else if (finalValue > 0.130f)
@@ -94,7 +106,7 @@ public class Timer : MonoBehaviour
             finalValue = 0;
             currentMorse += "-";
             getMorse.text += " — ";
-            
+            dashSound.Play();
         }
 
 
@@ -116,15 +128,25 @@ public class Timer : MonoBehaviour
 
             }
                 
-                if( getWord.text == number)
+                if( getWord.text == number && spaceDelay <= 6)
                 {
                     getWord.color = new Color32(9,200,9,255);
+                    if(getWord.text == number && spaceDelay <= 4)
+                    {  
+                     getMorse.text = "";
+                     currentMorse = "";
                     spaceDelay = 10;
+                    getWord.text = alphabet[pos + 1];
+                    getWord.color = new Color32(0,0,0,255);
+                    }
+                    
                 }
-                else if(getWord.text != number && spaceDelay < 6)
+                else if(getWord.text != number && spaceDelay < 3)
                 {
                     getWord.color = new Color32(205,9,9,255);
-                    spaceDelay = 10;
+                    spaceDelay = 11;
+                     getMorse.text = "";
+                     currentMorse = "";
                 }
         }
 
@@ -146,7 +168,7 @@ public class Timer : MonoBehaviour
         {
             currentMorse = "";
             getMorse.text = "";
-            spaceDelay = 10;
+            spaceDelay = 11;
 
 
         }
