@@ -166,7 +166,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83}
-  - component: {fileID: 226}
   m_Layer: 0
   m_Name: Cam pivot
   m_TagString: Untagged
@@ -320,6 +319,9 @@ MonoBehaviour:
   dot: 0
   line: 0
   getMorse: {fileID: 2026752105}
+  getWord: {fileID: 532370153}
+  spaceDelay: 10
+  spaceButton: {fileID: 322946591}
   alphabet:
   - A
   - B
@@ -728,7 +730,6 @@ GameObject:
   - component: {fileID: 106}
   - component: {fileID: 101}
   - component: {fileID: 274}
-  - component: {fileID: 273}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -834,8 +835,6 @@ GameObject:
   - component: {fileID: 88}
   - component: {fileID: 92}
   - component: {fileID: 281}
-  - component: {fileID: 282}
-  - component: {fileID: 284}
   m_Layer: 0
   m_Name: UI Camera
   m_TagString: Untagged
@@ -1275,7 +1274,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cd40e96de2d0b7848b0e5fe026659952, type: 2}
   m_CullingMode: 0
@@ -2642,7 +2641,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 282}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LeTai.Asset.TranslucentImage.Demo.ChangeBlurConfig,
           LeTai.TranslucentImage.Demo
         m_MethodName: ChangeBlurSize
@@ -2667,26 +2666,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1347817507220a4384f3ff6f7c24546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveUnitsPerSecond:
-    value: {x: 0, y: 0, z: 0}
-    space: 1
-  rotateDegreesPerSecond:
-    value: {x: 0, y: -15, z: 0}
-    space: 0
-  ignoreTimescale: 0
-  lateUpdate: 1
 --- !u!114 &229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3125,7 +3104,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 282}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LeTai.Asset.TranslucentImage.Demo.ChangeBlurConfig,
           LeTai.TranslucentImage.Demo
         m_MethodName: ChangeIteration
@@ -3278,7 +3257,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 282}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LeTai.Asset.TranslucentImage.Demo.ChangeBlurConfig,
           LeTai.TranslucentImage.Demo
         m_MethodName: SetUpdateRate
@@ -3303,7 +3282,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 273}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LeTai.Asset.TranslucentImage.Demo.ChangeBlurConfig,
           LeTai.TranslucentImage.Demo
         m_MethodName: SetUpdateRate
@@ -3504,7 +3483,7 @@ MonoBehaviour:
   vibrancy: 1.8
   brightness: 0
   flatten: 0.15
-  m_spriteBlending: 0.566
+  m_spriteBlending: 0.25
 --- !u!114 &269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3512,7 +3491,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -3548,19 +3527,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 268}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 103}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: open
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3625,7 +3592,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 282}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LeTai.Asset.TranslucentImage.Demo.ChangeBlurConfig,
           LeTai.TranslucentImage.Demo
         m_MethodName: ChangeDownsample
@@ -3680,19 +3647,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d55b4a5e282964cbd7ea4acfceffb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translucentImages: []
 --- !u!114 &274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3803,20 +3757,6 @@ MonoBehaviour:
     y: 0.135
     width: 0.98
     height: 0.725
---- !u!114 &282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d55b4a5e282964cbd7ea4acfceffb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translucentImages:
-  - {fileID: 268}
 --- !u!114 &283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3829,24 +3769,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9357d99646ca651449e2ee107b027115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3fa58b3b16576b46b8b4f7985c67d6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  presets:
-  - platform: 11
-    size: 2.5
-    iteration: 3
-    downsample: 1
-    maxUpdateRate: 30
 --- !u!114 &285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4263,7 +4185,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 282}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LeTai.Asset.TranslucentImage.Demo.ChangeBlurConfig,
           LeTai.TranslucentImage.Demo
         m_MethodName: ChangeVibrancy
@@ -4514,7 +4436,7 @@ GameObject:
   - component: {fileID: 322946591}
   - component: {fileID: 322946590}
   m_Layer: 5
-  m_Name: Red
+  m_Name: MorseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
