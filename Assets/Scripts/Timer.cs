@@ -17,10 +17,14 @@ public class Timer : MonoBehaviour
      
      [SerializeField]TextMeshProUGUI getMorse;
      [SerializeField]TextMeshProUGUI getWord;
+     [SerializeField] TextMeshProUGUI tryAgain;
      [SerializeField] float spaceDelay = 10f;
      [SerializeField] Button spaceButton; 
      [SerializeField] AudioSource dashSound;
      [SerializeField] AudioSource dotSound;
+     [SerializeField] AudioSource correctSound;
+      
+     [SerializeField] AudioSource wrongSound;
      
      ColorBlock theColor;
 
@@ -43,6 +47,8 @@ public class Timer : MonoBehaviour
         theColor = GetComponent<Button>().colors;
         dotSound = GetComponent<AudioSource>();
         dashSound = GetComponent<AudioSource>();
+        
+        
          
     }
 
@@ -55,6 +61,12 @@ public class Timer : MonoBehaviour
     }
     void  getNumber()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            dotSound.Play();
+            dashSound.Play();
+            spaceDelay = 11;
+        }
         
                                                  
 
@@ -87,6 +99,9 @@ public class Timer : MonoBehaviour
             theColor.colorMultiplier = 1;
             theColor.fadeDuration = 0.15f;
             spaceButton.colors = theColor;
+            dotSound.Stop();
+            dashSound.Stop();
+
            
 
         }
@@ -97,16 +112,17 @@ public class Timer : MonoBehaviour
             currentMorse += ".";
             getMorse.text += " • ";
             Debug.Log(currentMorse);
-            dotSound.Play();
+            
 
         }
+        
         else if (finalValue > 0.130f)
         {
             Debug.Log("-");
             finalValue = 0;
             currentMorse += "-";
             getMorse.text += " — ";
-            dashSound.Play();
+            
         }
 
 
@@ -127,15 +143,22 @@ public class Timer : MonoBehaviour
                 Debug.Log(currentMorse);
 
             }
+
                 
                 if( getWord.text == number && spaceDelay <= 6)
                 {
                     getWord.color = new Color32(9,200,9,255);
+                    if(spaceDelay <=6 && spaceDelay >= 5.99f)
+                    {
+                        correctSound.Play();
+                        
+                    }
                     if(getWord.text == number && spaceDelay <= 4)
-                    {  
+                    {
+                    
                      getMorse.text = "";
                      currentMorse = "";
-                    spaceDelay = 10;
+                    spaceDelay = 11;
                     getWord.text = alphabet[pos + 1];
                     getWord.color = new Color32(0,0,0,255);
                     }
@@ -143,11 +166,38 @@ public class Timer : MonoBehaviour
                 }
                 else if(getWord.text != number && spaceDelay < 3)
                 {
+
+                    if (spaceDelay < 3 && spaceDelay >= 2.99f)
+                    {
+                        wrongSound.Play();
+                    }
+                
+                    
                     getWord.color = new Color32(205,9,9,255);
+                     tryAgain.text = "TRY AGAIN!";
+                    
+
+
+                    if(spaceDelay == 0)
+                    {
+                    tryAgain.text = "";
                     spaceDelay = 11;
-                     getMorse.text = "";
-                     currentMorse = "";
+                    getMorse.text = "";
+                    currentMorse = "";
+                    getWord.text = "A";
+                    getWord.color = new Color32(0, 0, 0, 255);
+                    }
                 }
+            if (getWord.text != number && spaceDelay <=0)
+            {
+                tryAgain.text = "";
+                spaceDelay = 11;
+                getMorse.text = "";
+                currentMorse = "";
+                getWord.text = "A";
+                getWord.color = new Color32(0, 0, 0, 255);
+            }
+
         }
 
      // int pos = Array.IndexOf(hasan, currentMorse);
@@ -171,6 +221,10 @@ public class Timer : MonoBehaviour
             spaceDelay = 11;
 
 
+        }
+        if (spaceDelay == 0f)
+        {
+            spaceDelay = 11f;
         }
 
         
